@@ -32,6 +32,7 @@ app/                公開されるファイル一式（これだけで動く）
   js/               動き（app.js が起点。views/ に画面ごとのファイル）
   data/words.json   単語データ（1語1行）
   sw.js             オフライン対応（更新時は VERSION を変える）
+  404.html          URL の打ち間違い時にアプリの入口へ戻す
   manifest.webmanifest, icons/   ホーム画面用
 tools/
   check_words.py    単語データの点検
@@ -76,6 +77,7 @@ python tools/check_words.py
 | 更新したのに画面が変わらない | `sw.js` の VERSION を変えたか。アプリを一度閉じて開き直す |
 | 学習記録が消えた | Safari で「ホーム画面に追加」せずに使っていると、しばらく開かないときに消えることがあります。追加して使い、たまに「書き出す」で保存を |
 | 単語データの誤り | `words.json` を直して点検 → push |
+| 404 と表示される | URL がすべて小文字で、最後が `/englishwords1800/` になっているか。古いタブなら再読み込み |
 
 ## 技術メモ（保守する人向け）
 
