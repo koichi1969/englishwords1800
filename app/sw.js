@@ -2,7 +2,7 @@
  * 役割: ファイルを端末に保存して、電波がなくても開けるようにする。
  * 更新のしかた: アプリのファイルを変えたら、下の VERSION を変える（古い保存を捨てて新しいものを取り直す）。
  */
-const VERSION = '0.1.0-2026-10-11a';
+const VERSION = '0.1.0-2026-10-11b';
 const CACHE = `mainichi-eitango-${VERSION}`;
 const ASSETS = [
   './',
@@ -47,7 +47,11 @@ self.addEventListener('activate', (event) => {
 });
 
 // HTML と単語データは「まずネット、だめなら保存分」。それ以外は「まず保存分、なければネット」。
+// 手元の確認中（localhost）は保存を使わず、いつも最新のファイルを取る
+const DEV = self.location.hostname === 'localhost' || self.location.hostname === '127.0.0.1';
+
 self.addEventListener('fetch', (event) => {
+  if (DEV) return;
   const req = event.request;
   if (req.method !== 'GET') return;
   const url = new URL(req.url);
