@@ -1,0 +1,9 @@
+# 企画・設計・判断の記録（家族の事情を含むため公開しない）
+docs/
+# ローカル用
+.claude/
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
+*.log
